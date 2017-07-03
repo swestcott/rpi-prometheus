@@ -1,0 +1,20 @@
+sudo: required
+
+language: bash
+
+services:
+- docker
+
+script:
+- docker run --rm --privileged multiarch/qemu-user-static:register --reset
+- docker build -t swestcott/rpi-prometheus:build .
+- docker run swestcott/rpi-prometheus:build -version
+- VERSION=$(docker inspect --format '{{ range .Config.Env }}{{ println . }}{{ end }}' swestcott/rpi-prometheus:build | grep PROMETHEUS_VERSION | sed 's/^.*=//')
+- >
+  if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker tag swestcott/rpi-prometheus:build swestcott/rpi-prometheus:$VERSION
+    docker tag swestcott/rpi-prometheus:build swestcott/rpi-prometheus:latest
+    docker push swestcott/rpi-prometheus:$VERSION
+    docker push swestcott/rpi-prometheus:latest
+  fi

@@ -1,9 +1,9 @@
-FROM hypriot/rpi-alpine-scratch:edge
+FROM hypriot/rpi-alpine:3.5
 
 ENV PROMETHEUS_VERSION 1.7.1
 
-#ADD https://github.com/prometheus/prometheus/releases/download/v${PROMETHEUS_VERSION}/prometheus-${PROMETHEUS_VERSION}.linux-armv7.tar.gz /tmp/
-COPY prometheus-${PROMETHEUS_VERSION}.linux-armv7.tar.gz /tmp/
+ADD https://github.com/prometheus/prometheus/releases/download/v${PROMETHEUS_VERSION}/prometheus-${PROMETHEUS_VERSION}.linux-armv7.tar.gz /tmp/
+#COPY prometheus-${PROMETHEUS_VERSION}.linux-armv7.tar.gz /tmp/
 
 RUN cd /tmp \
 	&& tar -zxvf /tmp/prometheus-${PROMETHEUS_VERSION}.linux-armv7.tar.gz \
