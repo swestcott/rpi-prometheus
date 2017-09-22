@@ -1,4 +1,4 @@
-FROM hypriot/rpi-alpine:3.5
+FROM hypriot/rpi-alpine:3.6
 
 ENV PROMETHEUS_VERSION 1.7.1
 
