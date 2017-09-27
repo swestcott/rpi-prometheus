@@ -1,6 +1,6 @@
 FROM hypriot/rpi-alpine:3.6
 
-ENV PROMETHEUS_VERSION 1.7.1
+ENV PROMETHEUS_VERSION 1.7.2
 
 ADD https://github.com/prometheus/prometheus/releases/download/v${PROMETHEUS_VERSION}/prometheus-${PROMETHEUS_VERSION}.linux-armv7.tar.gz /tmp/
 #COPY prometheus-${PROMETHEUS_VERSION}.linux-armv7.tar.gz /tmp/
