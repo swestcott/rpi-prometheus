@@ -1,5 +1,7 @@
 FROM hypriot/rpi-alpine:3.6
 
+LABEL maintainer="swestcott@gmail.com"
+
 ENV PROMETHEUS_VERSION 1.8.0
 
 ADD https://github.com/prometheus/prometheus/releases/download/v${PROMETHEUS_VERSION}/prometheus-${PROMETHEUS_VERSION}.linux-armv7.tar.gz /tmp/
