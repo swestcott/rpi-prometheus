@@ -2,7 +2,7 @@ FROM hypriot/rpi-alpine:3.6
 
 LABEL maintainer="swestcott@gmail.com"
 
-ENV PROMETHEUS_VERSION 1.8.2
+ENV PROMETHEUS_VERSION 2.0.0
 
 ADD https://github.com/prometheus/prometheus/releases/download/v${PROMETHEUS_VERSION}/prometheus-${PROMETHEUS_VERSION}.linux-armv7.tar.gz /tmp/
 #COPY prometheus-${PROMETHEUS_VERSION}.linux-armv7.tar.gz /tmp/
@@ -27,6 +27,6 @@ WORKDIR /prometheus
 ENTRYPOINT [ "/bin/prometheus" ]
 
 CMD [ "-config.file=/etc/prometheus/prometheus.yml", \
-    "-storage.local.path=/prometheus", \
+    "-storage.tsdb.path=/prometheus", \
     "-web.console.libraries=/etc/prometheus/console_libraries", \
     "-web.console.templates=/etc/prometheus/consoles" ]
