@@ -4,6 +4,9 @@ LABEL maintainer="swestcott@gmail.com"
 
 ENV PROMETHEUS_VERSION 2.0.0
 
+RUN sed -i -e 's/http/https/g' /etc/apk/repositories
+RUN apk upgrade --update-cache
+
 ADD https://github.com/prometheus/prometheus/releases/download/v${PROMETHEUS_VERSION}/prometheus-${PROMETHEUS_VERSION}.linux-armv7.tar.gz /tmp/
 #COPY prometheus-${PROMETHEUS_VERSION}.linux-armv7.tar.gz /tmp/
 
