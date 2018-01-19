@@ -2,7 +2,7 @@ FROM hypriot/rpi-alpine:3.6
 
 LABEL maintainer="swestcott@gmail.com"
 
-ENV PROMETHEUS_VERSION 2.0.0
+ENV PROMETHEUS_VERSION 2.1.0
 
 RUN sed -i -e 's/http/https/g' /etc/apk/repositories \
 	&& apk upgrade --no-cache \
