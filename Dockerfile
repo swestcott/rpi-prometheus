@@ -30,7 +30,7 @@ WORKDIR /prometheus
 
 ENTRYPOINT [ "/bin/prometheus" ]
 
-USER nobody
+USER nobody:nobody
 
 CMD [ "--config.file=/etc/prometheus/prometheus.yml", \
     "--storage.tsdb.path=/prometheus", \
