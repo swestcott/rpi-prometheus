@@ -1,12 +1,14 @@
-FROM hypriot/rpi-alpine:3.6
+FROM resin/armhf-alpine:3.7
 
 LABEL maintainer="swestcott@gmail.com"
 
 ENV PROMETHEUS_VERSION 2.1.0
 
-RUN sed -i -e 's/http/https/g' /etc/apk/repositories \
-	&& apk upgrade --no-cache \
-	&& apk add --no-cache ca-certificates
+RUN ["cross-build-start"]
+
+RUN apk --update upgrade \
+    && apk add ca-certificates \
+    && rm -r /var/cache/apk/*
 
 ADD https://github.com/prometheus/prometheus/releases/download/v${PROMETHEUS_VERSION}/prometheus-${PROMETHEUS_VERSION}.linux-armv7.tar.gz /tmp/
 #COPY prometheus-${PROMETHEUS_VERSION}.linux-armv7.tar.gz /tmp/
@@ -21,6 +23,8 @@ RUN cd /tmp \
 	&& cp -r /tmp/prometheus-${PROMETHEUS_VERSION}.linux-armv7/consoles/ /etc/prometheus/ \
 	&& rm /tmp/prometheus-${PROMETHEUS_VERSION}.linux-armv7.tar.gz \
 	&& rm -r /tmp/prometheus-${PROMETHEUS_VERSION}.linux-armv7/
+
+RUN ["cross-build-end"]
 
 EXPOSE 9090
 
