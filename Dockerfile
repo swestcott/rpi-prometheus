@@ -2,7 +2,7 @@ FROM resin/armhf-alpine:3.7
 
 LABEL maintainer="swestcott@gmail.com"
 
-ENV PROMETHEUS_VERSION 2.2.0-rc.1
+ENV PROMETHEUS_VERSION 2.2.0
 
 RUN ["cross-build-start"]
 
