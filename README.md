@@ -7,4 +7,4 @@
 [![Image Size](https://img.shields.io/microbadger/image-size/swestcott/rpi-prometheus.svg)](https://microbadger.com/images/swestcott/rpi-prometheus)
 [![License](https://img.shields.io/github/license/swestcott/rpi-prometheus.svg)](https://github.com/swestcott/rpi-prometheus)
 
-[prometheus](https://github.com/influxdata/prometheus) docker image for use with the Raspberry Pi.
+[prometheus](https://github.com/prometheus/prometheus) docker image for use with the Raspberry Pi.
