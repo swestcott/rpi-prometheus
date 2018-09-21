@@ -3,7 +3,7 @@ FROM resin/armhf-alpine:3.7
 LABEL maintainer="swestcott@gmail.com" \
       org.label-schema.vcs-url="https://github.com/swestcott/rpi-prometheus"
 
-ENV PROMETHEUS_VERSION 2.4.0
+ENV PROMETHEUS_VERSION 2.4.1
 
 RUN ["cross-build-start"]
 
